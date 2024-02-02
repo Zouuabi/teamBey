@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teambey_org/core/route/route_generator.dart';
-import 'package:teambey_org/presentation/home/widgets/profile_picture.dart';
+import 'package:teambey_org/presentation/profile/widgets/profile_picture.dart';
 
 class CreateProject extends StatelessWidget {
   const CreateProject({

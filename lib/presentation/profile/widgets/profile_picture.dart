@@ -5,9 +5,11 @@ class ProfilePicture extends StatelessWidget {
   const ProfilePicture({
     super.key,
     required this.image,
+    this.size = 20,
   });
 
   final Widget image;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class ProfilePicture extends StatelessWidget {
         Navigator.of(context).pushReplacementNamed(RouteGenerator.profile);
       },
       child: CircleAvatar(
+        radius: size,
         child: image,
       ),
     );

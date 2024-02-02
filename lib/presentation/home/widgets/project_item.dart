@@ -1,94 +1,138 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:teambey_org/presentation/home/widgets/widgets.dart';
 
-class ProjectItem extends StatelessWidget {
+class ProjectItem extends StatefulWidget {
   const ProjectItem({
     super.key,
   });
 
   @override
+  State<ProjectItem> createState() => _ProjectItemState();
+}
+
+class _ProjectItemState extends State<ProjectItem> {
+  // For Ui Testing
+  bool isLiked = false;
+  int likes = Random().nextInt(900);
+  int comments = Random().nextInt(900);
+  int time = Random().nextInt(60);
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              leading: ProfilePicture(
-                  image: Image.asset('assets/images/profile.png')),
-              title: Text(
-                'UserName',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              subtitle: Text(
-                '1 min',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-            Text(
-              'Project Title ',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                  ),
-                  child: Text(
-                    'Description',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(color: Colors.teal),
-                  ),
+    return InkWell(
+      onTap: () {},
+      child: Card(
+        elevation: 6,
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: ProfilePicture(
+                    image: Image.asset('assets/images/profile.png')),
+                title: Text(
+                  'Oubeid zouabi',
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
-                const SizedBox(width: 10),
-                Text(
-                  'Prototype',
-                  style: Theme.of(context).textTheme.titleMedium,
+                subtitle: Text(
+                  '$time min',
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
-              ],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
               ),
-              child: Text(
-                "this text is just for  debugging purposes only and  sdfdssd sdf sdfaze afdth fhcvezt sfae hreet azecv sdf d    with dfsd ksdfkj kdjdsfjk skdfjfk sdfk jskdlj sdf dsfj ",
-                style: Theme.of(context).textTheme.bodyMedium,
+              Text(
+                'TeamBey project - Collaboration platform',
+                style: Theme.of(context).textTheme.titleMedium,
               ),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Row(children: [
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.thumb_up)),
-                  Text(
-                    '27k',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  )
-                ]),
-                const SizedBox(width: 10),
-                Row(children: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.comment)),
-                  Text(
-                    '5k',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  )
-                ]),
-                const Spacer(),
-                OutlinedButton(
-                    onPressed: () {}, child: const Text('Request Join')),
-              ],
-            )
-          ],
+              const Divider(),
+              const Text(
+                'Teambey is a non-profit collaboration platformfostering a professional environment for project creation, team formation, and project management. It encourages adherence to industry standards and provides a unified space for users to connect and collaborate.needed roles :\n- Flutter dev\n- React dev\n- Backend dev\n- Designer',
+                textAlign: TextAlign.left,
+              ),
+              const Divider(),
+              Row(
+                children: [
+                  Row(children: [
+                    IconButton(
+                        onPressed: () {
+                          setState(() {
+                            // XNOR
+                            if (isLiked) {
+                              isLiked = false;
+                              likes--;
+                            } else {
+                              isLiked = true;
+                              likes++;
+                            }
+                          });
+                        },
+                        icon: Icon(
+                          Icons.thumb_up,
+                          color: isLiked ? Colors.teal : Colors.grey,
+                        )),
+                    Text(
+                      '$likes',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ]),
+                  const SizedBox(width: 10),
+                  Row(children: [
+                    IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.comment)),
+                    Text(
+                      '$comments',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ]),
+                  const Spacer(),
+                  OutlinedButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 150,
+                                    width: 300,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Center(
+                                              child: Text(
+                                                'Request has been sent to the team leader',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: const Text('Okay'))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            });
+                      },
+                      child: const Text('Request Join')),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

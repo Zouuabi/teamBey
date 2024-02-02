@@ -11,7 +11,7 @@ class Feed extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverList.builder(
-            itemCount: 10,
+            itemCount: 50,
             itemBuilder: (context, index) {
               if (index == 0) {
                 return const CreateProject();

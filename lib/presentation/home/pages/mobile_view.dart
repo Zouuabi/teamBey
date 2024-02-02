@@ -3,7 +3,7 @@ import 'package:teambey_org/core/route/route_generator.dart';
 import 'package:teambey_org/presentation/home/widgets/widgets.dart';
 import 'package:teambey_org/presentation/notifications/notifications.dart';
 import 'package:teambey_org/presentation/post_project/post_project_page.dart';
-import 'package:teambey_org/presentation/profile/profile_page.dart';
+import 'package:teambey_org/presentation/profile/pages/profile_page.dart';
 import 'package:teambey_org/presentation/projects/projects_page.dart';
 
 class MobileView extends StatefulWidget {

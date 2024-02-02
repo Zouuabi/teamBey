@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teambey_org/presentation/shared/widgets/web_layout.dart';
+import 'package:teambey_org/presentation/chat/pages/mobile_view.dart';
+import 'package:teambey_org/presentation/chat/pages/web_view.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -8,10 +9,9 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 700) {
-        return const WebLayout(body: Center(child: Text('Chat page')));
+        return const WebView();
       } else {
-        return Scaffold(
-            appBar: AppBar(), body: const Center(child: Text('Chat page')));
+        return const MobileView();
       }
     });
   }

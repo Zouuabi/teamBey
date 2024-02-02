@@ -1,18 +1,22 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-import 'package:teambey_org/presentation/shared/widgets/web_layout.dart';
+import 'package:flutter/material.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > 700) {
-        return const WebLayout(body: Center(child: Text('Notifications page')));
-      } else {
-        return const Center(child: Text('Notifications page'));
-      }
-    });
+    return ListView.builder(
+        itemCount: 30,
+        itemBuilder: (context, index) {
+          final int time = Random().nextInt(60);
+          return ListTile(
+            title: Text('Notification No $index'),
+            subtitle: const Text('someone has post a project '),
+            trailing: Text('$time min ago'),
+            onTap: () {},
+          );
+        });
   }
 }
