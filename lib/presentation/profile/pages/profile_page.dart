@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:teambey_org/presentation/home/pages/web_view.dart';
 import 'package:teambey_org/presentation/profile/pages/mobile_view.dart';
+import 'package:teambey_org/presentation/profile/pages/web_view.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

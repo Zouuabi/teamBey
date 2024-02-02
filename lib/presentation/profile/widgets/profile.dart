@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teambey_org/presentation/post_project/post_project_page.dart';
 import 'package:teambey_org/presentation/profile/widgets/profile_picture.dart';
 
 class Profile extends StatelessWidget {
@@ -8,16 +9,18 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const EditableProfileAndCover(),
-        Container(
-          width: double.infinity,
-          height: 300,
-          decoration: BoxDecoration(border: Border.all(color: Colors.white)),
-          child: const Center(child: Text('Profile Content')),
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const EditableProfileAndCover(),
+          Container(
+              width: double.infinity,
+              height: 400,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.white)),
+              child: const RahaNafsya())
+        ],
+      ),
     );
   }
 }
